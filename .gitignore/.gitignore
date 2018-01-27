@@ -1,0 +1,17 @@
+<context>
+  <input id="bienvenida" pattern="(ola|hola|buen dia|buen día) *">
+
+    <output value="¡Hola $UserName! Gracias por ponerse en contacto con nosotros. Actualmente usted está conversando con un Bot, pero pronto le atenderá alguien del equipo de MonBet para resolver todas sus dudas o recibir sus comentarios. " if="full($+UserName)"/>
+
+    <context id="name_is_empty" if="empty($UserName)">
+      <output value="¡Hola! Es un gusto saludarle. ¿Cúal es su nombre? Nos encantará contestar sus dudas o recibir sus comentarios. Actualmente está conversando con un bot, pero alguien del equipo de Monbet le atenderá enseguida."/>
+
+      <input pattern="$Text">
+        <var name="UserName" value="$Text" scope="user"/>
+        <output value="Me alegra conocerle $UserName. Si gusta, puede visitar nuestra tienda virtual: https://www.facebook.com/MonBet.tendencias/shop"/>
+        <context/>
+      </input>
+
+    </context>
+  </input>
+</context>
